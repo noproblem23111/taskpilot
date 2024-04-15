@@ -1,0 +1,89 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tasks",
+  "info": {
+    "singularName": "task",
+    "pluralName": "tasks",
+    "displayName": "Task",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "sended"
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "rejected_reason": {
+      "type": "string"
+    },
+    "expected_note": {
+      "type": "string"
+    },
+    "replace_part": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "fee": {
+      "type": "biginteger"
+    },
+    "replace_part_cost": {
+      "type": "biginteger"
+    },
+    "total_price": {
+      "type": "biginteger"
+    },
+    "work_hour": {
+      "type": "integer"
+    },
+    "time": {
+      "type": "datetime",
+      "required": false
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "tasks"
+    },
+    "tasker": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tasker.tasker",
+      "inversedBy": "tasks"
+    },
+    "isNow": {
+      "type": "boolean",
+      "required": false
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "task"
+    },
+    "media": {
+      "type": "json"
+    },
+    "address": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::address.address",
+      "inversedBy": "tasks"
+    }
+  }
+}
