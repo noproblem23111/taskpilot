@@ -48,9 +48,9 @@ module.exports = {
   // Cập nhật một tasker
   async update(ctx) {
     try {
-      const { taskerId } = ctx.params;
+      const { id } = ctx.params;
       const { data } = ctx.request.body;
-      const entity = await strapi.entityService.update('api::tasker.tasker', taskerId, { data });
+      const entity = await strapi.entityService.update('api::tasker.tasker', id, { data });
       return entity;
     } catch (error) {
       ctx.throw(500, error);
@@ -60,8 +60,8 @@ module.exports = {
   // Xóa một tasker
   async delete(ctx) {
     try {
-      const { taskerId } = ctx.params;
-      const entity = await strapi.entityService.delete('api::tasker.tasker', taskerId);
+      const { id } = ctx.params;
+      const entity = await strapi.entityService.delete('api::tasker.tasker', id);
       return entity;
     } catch (error) {
       ctx.throw(500, error);
