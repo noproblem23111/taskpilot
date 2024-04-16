@@ -23,19 +23,23 @@ module.exports = {
   },
 
   // Tìm một tasker dựa trên taskerId
+  // Tìm một tasker dựa trên taskerId
   async findOne(ctx) {
     try {
       const { id } = ctx.params;
-      const entity = await strapi.entityService.findMany('api::tasker.tasker', {
+      const entities = await strapi.entityService.findMany('api::tasker.tasker', {
         filters: { taskerId: { $eq: id } },
+        populate: ['addresses'],
         ...ctx.query,
       });
 
-      if (!entity) {
+      if (entities.length === 0) {
         ctx.throw(404, 'Tasker not found');
+      } else if (entities.length > 1) {
+        ctx.throw(500, 'Multiple taskers found with the same taskerId');
       }
 
-      return entity;
+      return entities[0];
     } catch (error) {
       ctx.throw(500, error);
     }

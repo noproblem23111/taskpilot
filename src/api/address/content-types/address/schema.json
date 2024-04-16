@@ -35,6 +35,12 @@
       "relation": "oneToMany",
       "target": "api::task.task",
       "mappedBy": "address"
+    },
+    "tasker": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tasker.tasker",
+      "inversedBy": "addresses"
     }
   }
 }

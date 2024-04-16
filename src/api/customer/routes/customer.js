@@ -8,12 +8,7 @@ module.exports = {
       { method: 'DELETE', path: '/customers/:id', handler: 'customer.delete' },
   
       // Custom findByAddress Route
-      {
-        method: 'GET',
-        path: '/find-by-address',
-        handler: 'customer.findByAddress',
-        config: { auth: false },
-      },
+      
     ],
   };
   

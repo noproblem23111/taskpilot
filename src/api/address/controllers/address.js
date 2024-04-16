@@ -25,5 +25,15 @@ module.exports = createCoreController('api::address.address', ({ strapi }) => ({
     } catch (err) {
       ctx.throw(500, err);
     }
+  },
+  async getListAddressByTaskerId(ctx) {
+    try {
+      const taskerId = ctx.params.taskerid; // Corrected variable name
+
   }
+  catch (err) {
+    ctx.throw(500, err);
+  }
+  }
+  
 }));

@@ -15,9 +15,6 @@
     "customerId": {
       "type": "uid"
     },
-    "address": {
-      "type": "string"
-    },
     "phone": {
       "type": "string"
     },

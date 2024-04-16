@@ -15,9 +15,6 @@
     "taskerId": {
       "type": "uid"
     },
-    "address": {
-      "type": "string"
-    },
     "phone": {
       "type": "string"
     },
@@ -41,6 +38,12 @@
     },
     "mail": {
       "type": "email"
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "tasker"
     }
   }
 }

@@ -27,6 +27,7 @@ module.exports = {
       const { id } = ctx.params;
       const entities = await strapi.entityService.findMany('api::customer.customer', {
         filters: { customerId: { $eq: id } },
+        populate: ['addresses'],
         ...ctx.query,
       });
   
@@ -64,28 +65,5 @@ module.exports = {
       ctx.throw(500, error);
     }
   },
-  async findByAddress(ctx) {
-    try {
-      let { address } = ctx.query;
 
-      // Kiểm tra và xử lý nếu address là một mảng
-      if (Array.isArray(address)) {
-        address = address[0];
-      }
-
-      if (!address) {
-        ctx.throw(400, 'Address query param is required.');
-      }
-      
-      // Thực hiện tìm kiếm dựa trên địa chỉ
-      const entities = await strapi.entityService.findMany('api::customer.customer', {
-        filters: { address: { $containsi: address } },
-      });
-
-      // Trả về kết quả tìm kiếm
-      return entities;
-    } catch (error) {
-      ctx.throw(500, error);
-    }
-  },
 };

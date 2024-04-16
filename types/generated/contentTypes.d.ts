@@ -795,6 +795,11 @@ export interface ApiAddressAddress extends Schema.CollectionType {
       'oneToMany',
       'api::task.task'
     >;
+    tasker: Attribute.Relation<
+      'api::address.address',
+      'manyToOne',
+      'api::tasker.tasker'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -826,7 +831,6 @@ export interface ApiCustomerCustomer extends Schema.CollectionType {
   };
   attributes: {
     customerId: Attribute.UID;
-    address: Attribute.String;
     phone: Attribute.String;
     username: Attribute.String;
     tasks: Attribute.Relation<
@@ -1009,7 +1013,6 @@ export interface ApiTaskerTasker extends Schema.CollectionType {
   };
   attributes: {
     taskerId: Attribute.UID;
-    address: Attribute.String;
     phone: Attribute.String;
     username: Attribute.String;
     tasks: Attribute.Relation<
@@ -1021,6 +1024,11 @@ export interface ApiTaskerTasker extends Schema.CollectionType {
     birthDay: Attribute.String;
     gender: Attribute.String;
     mail: Attribute.Email;
+    addresses: Attribute.Relation<
+      'api::tasker.tasker',
+      'oneToMany',
+      'api::address.address'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
