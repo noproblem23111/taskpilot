@@ -19,6 +19,12 @@ module.exports = {
       path: '/detailtask/:id',
       handler: 'api::task.task.getDetailTaskByTaskId',
       config: {auth:false}
+    },
+    {
+      method: 'GET',
+      path: '/task/tasker/:id', 
+      handler: 'api::task.task.getListTaskByTaskerId',
+      config: { auth: false },
     }
   ],
 };

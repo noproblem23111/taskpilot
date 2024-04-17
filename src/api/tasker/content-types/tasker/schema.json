@@ -44,6 +44,12 @@
       "relation": "oneToMany",
       "target": "api::address.address",
       "mappedBy": "tasker"
+    },
+    "denied_tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::denied-task.denied-task",
+      "mappedBy": "tasker"
     }
   }
 }

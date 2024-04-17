@@ -870,6 +870,45 @@ export interface ApiCustomerCustomer extends Schema.CollectionType {
   };
 }
 
+export interface ApiDeniedTaskDeniedTask extends Schema.CollectionType {
+  collectionName: 'denied_tasks';
+  info: {
+    singularName: 'denied-task';
+    pluralName: 'denied-tasks';
+    displayName: 'DeniedTask';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tasker: Attribute.Relation<
+      'api::denied-task.denied-task',
+      'manyToOne',
+      'api::tasker.tasker'
+    >;
+    task: Attribute.Relation<
+      'api::denied-task.denied-task',
+      'manyToOne',
+      'api::task.task'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::denied-task.denied-task',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::denied-task.denied-task',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiReviewReview extends Schema.CollectionType {
   collectionName: 'reviews';
   info: {
@@ -990,6 +1029,11 @@ export interface ApiTaskTask extends Schema.CollectionType {
       'manyToOne',
       'api::address.address'
     >;
+    denied_tasks: Attribute.Relation<
+      'api::task.task',
+      'oneToMany',
+      'api::denied-task.denied-task'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1029,6 +1073,11 @@ export interface ApiTaskerTasker extends Schema.CollectionType {
       'oneToMany',
       'api::address.address'
     >;
+    denied_tasks: Attribute.Relation<
+      'api::tasker.tasker',
+      'oneToMany',
+      'api::denied-task.denied-task'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1067,6 +1116,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::address.address': ApiAddressAddress;
       'api::customer.customer': ApiCustomerCustomer;
+      'api::denied-task.denied-task': ApiDeniedTaskDeniedTask;
       'api::review.review': ApiReviewReview;
       'api::service.service': ApiServiceService;
       'api::task.task': ApiTaskTask;

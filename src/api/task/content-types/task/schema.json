@@ -84,6 +84,12 @@
       "relation": "manyToOne",
       "target": "api::address.address",
       "inversedBy": "tasks"
+    },
+    "denied_tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::denied-task.denied-task",
+      "mappedBy": "task"
     }
   }
 }

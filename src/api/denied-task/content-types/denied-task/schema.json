@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "denied_tasks",
+  "info": {
+    "singularName": "denied-task",
+    "pluralName": "denied-tasks",
+    "displayName": "DeniedTask"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tasker": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tasker.tasker",
+      "inversedBy": "denied_tasks"
+    },
+    "task": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::task.task",
+      "inversedBy": "denied_tasks"
+    }
+  }
+}
