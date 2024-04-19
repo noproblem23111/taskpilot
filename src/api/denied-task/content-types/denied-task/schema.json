@@ -4,7 +4,8 @@
   "info": {
     "singularName": "denied-task",
     "pluralName": "denied-tasks",
-    "displayName": "DeniedTask"
+    "displayName": "DeniedTask",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,9 @@
       "relation": "manyToOne",
       "target": "api::task.task",
       "inversedBy": "denied_tasks"
+    },
+    "denied_reason": {
+      "type": "text"
     }
   }
 }

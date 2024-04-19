@@ -876,6 +876,7 @@ export interface ApiDeniedTaskDeniedTask extends Schema.CollectionType {
     singularName: 'denied-task';
     pluralName: 'denied-tasks';
     displayName: 'DeniedTask';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -891,6 +892,7 @@ export interface ApiDeniedTaskDeniedTask extends Schema.CollectionType {
       'manyToOne',
       'api::task.task'
     >;
+    denied_reason: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
